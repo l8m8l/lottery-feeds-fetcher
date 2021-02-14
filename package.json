@@ -1,0 +1,38 @@
+{
+  "name": "lottery-feeds-fetcher",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "format": "prettier --write '{src,cloud}/**/*.js'",
+    "lint": "eslint '{src,cloud}/**/*.js'",
+    "start": "node src/index.js"
+  },
+  "dependencies": {
+    "@0y0/scraper": "^1.0.0-rc.7",
+    "@0y0/scraper-extensions": "^1.0.0-rc.4",
+    "@0y0/scraper-plugin-http": "^1.0.0-rc.5",
+    "debug": "^4.3.1",
+    "dotenv": "^8.2.0"
+  },
+  "devDependencies": {
+    "@0y0/babel-preset-vanilla": "^1.0.1",
+    "@0y0/eslint-config-vanilla": "^1.1.2",
+    "@babel/core": "^7.12.16",
+    "eslint": "^7.20.0",
+    "prettier": "^2.2.1"
+  },
+  "babel": {
+    "presets": [
+      "@0y0/vanilla"
+    ]
+  },
+  "eslintConfig": {
+    "extends": "@0y0/vanilla"
+  },
+  "prettier": {
+    "arrowParens": "avoid",
+    "semi": false,
+    "singleQuote": true,
+    "trailingComma": "none"
+  }
+}
