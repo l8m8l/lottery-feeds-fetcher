@@ -3,8 +3,10 @@ require('@0y0/scraper-extensions')
 const getPhenixFeed = require('./feeds/phenix')
 const { LotType } = require('./enum')
 require('./env')
+const healthCheck = require('./healthCheck')
 const logger = require('./logger')
 
+healthCheck()
 runScraper(
   [
     getPhenixFeed(LotType.PK10LA),

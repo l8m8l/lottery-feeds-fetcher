@@ -32,4 +32,5 @@ jobs:
             --quiet \
             --image=gcr.io/$PROJECT_ID/$MODULE_NAME:$GITHUB_SHA \
             --platform=managed \
-            --region=us-central1
+            --region=us-central1 \
+            --port 80
