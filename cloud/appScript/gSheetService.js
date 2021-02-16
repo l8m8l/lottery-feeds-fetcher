@@ -28,7 +28,7 @@ function _validateRequest(req) {
   if (!lotTypes.includes(req.type))
     throw new Error(`'${req.type}' is not a valid lottery type`)
   if (!Array.isArray(req.results))
-    throw new Error(`Request.results is not an array`)
+    throw new Error('Request.results is not an array')
 }
 
 function _handleRequest(req) {

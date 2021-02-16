@@ -9,14 +9,6 @@ const LotCode = {
   [LotType.D3W]: 'FC3D'
 }
 
-const LotCronTime = {
-  [LotType.PK10LA]: env.pk10laCron,
-  [LotType.PK10BJ]: env.pk10bjCron,
-  [LotType.LHHK]: env.lhhkCron,
-  [LotType.K3L3]: env.k3l3Cron,
-  [LotType.D3W]: env.d3wCron
-}
-
 function getInputConfig(type) {
   return {
     type: 'http',
@@ -66,11 +58,11 @@ function getOutputConfig(type) {
   }
 }
 
-module.exports = function getFeed(type) {
+module.exports = function getFeed(type, cronTime) {
   if (!LotCode[type]) throw new Error(`Phenix does not support '${type}'`)
   return {
     lotType: type,
-    cronTime: LotCronTime[type],
+    cronTime,
     runCronOnInit: true,
     in: getInputConfig(type),
     out: getOutputConfig(type)
