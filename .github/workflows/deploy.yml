@@ -1,6 +1,8 @@
 name: Deploy
 
-on: workflow_dispatch
+on:
+  release:
+    types: [released]
 
 env:
   PROJECT_ID: ${{ secrets.GCP_PROJECT_ID }}
@@ -25,12 +27,12 @@ jobs:
         run: |
           gcloud builds submit \
             --quiet \
-            --tag=gcr.io/$PROJECT_ID/$MODULE_NAME:$GITHUB_SHA
+            --tag=gcr.io/$PROJECT_ID/$MODULE_NAME:$GITHUB_REF
       - name: Deploy to Cloud Run
         run: |
           gcloud run deploy $MODULE_NAME \
             --quiet \
-            --image=gcr.io/$PROJECT_ID/$MODULE_NAME:$GITHUB_SHA \
+            --image=gcr.io/$PROJECT_ID/$MODULE_NAME:$GITHUB_REF \
             --platform=managed \
             --region=us-central1 \
-            --port 80
+            --port=80
