@@ -1,5 +1,6 @@
 const getPhenixFeed = require('../feeds/phenix')
 const { LotType } = require('../enum')
+const logger = require('../logger')
 
 function getFeed(type, cronTime) {
   switch (type) {
@@ -13,4 +14,9 @@ function getFeed(type, cronTime) {
   throw new Error(`Unsupported lottery type '${type}'`)
 }
 
-module.exports = { getFeed }
+function postFeed(error, opt) {
+  if (error) logger.error(`[${opt.lotType}] ${error.message}`)
+  else logger.info(`[${opt.lotType}] success`)
+}
+
+module.exports = { getFeed, postFeed }

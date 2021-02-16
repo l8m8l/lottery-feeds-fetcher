@@ -1,8 +1,7 @@
 const runScraper = require('@0y0/scraper')
 const { LotType } = require('../enum')
 const env = require('../env')
-const logger = require('../logger')
-const { getFeed } = require('./feedService')
+const { getFeed, postFeed } = require('./feedService')
 
 const LotCronTime = {
   [LotType.PK10LA]: env.pk10laCron,
@@ -19,19 +18,14 @@ function getCronFeed(type) {
 }
 
 function run() {
-  runScraper(
-    [
-      getCronFeed(LotType.PK10LA),
-      getCronFeed(LotType.PK10BJ),
-      getCronFeed(LotType.LHHK),
-      getCronFeed(LotType.K3L3),
-      getCronFeed(LotType.D3W)
-    ],
-    (error, opt) => {
-      if (error) logger.error(`[${opt.lotType}] ${error.message}`)
-      else logger.info(`[${opt.lotType}] success`)
-    }
-  )
+  const feeds = [
+    getCronFeed(LotType.PK10LA),
+    getCronFeed(LotType.PK10BJ),
+    getCronFeed(LotType.LHHK),
+    getCronFeed(LotType.K3L3),
+    getCronFeed(LotType.D3W)
+  ]
+  runScraper(feeds, postFeed)
 }
 
 module.exports = { run }
