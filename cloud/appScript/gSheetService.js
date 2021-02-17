@@ -55,7 +55,7 @@ function _getOrCreateSheet(spreadsheet, sheetName) {
 function _appendResults(sheet, results) {
   const lastRow = sheet.getLastRow()
   if (lastRow > 1) {
-    const startRow = Math.max(lastRow - 5 + 1, 2)
+    const startRow = Math.max(lastRow - 10 + 1, 2)
     const rowNums = lastRow - startRow + 1
     const values = sheet.getRange(startRow, 1, rowNums, 1).getValues()
     const nos = values.map(row => `${row[0]}`)
