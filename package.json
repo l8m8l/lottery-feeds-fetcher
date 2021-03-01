@@ -8,17 +8,16 @@
     "start": "node src/index.js"
   },
   "dependencies": {
-    "@0y0/scraper": "^1.0.0-rc.8",
-    "@0y0/scraper-extensions": "^1.0.0-rc.4",
-    "@0y0/scraper-plugin-http": "^1.0.0-rc.6",
+    "@0y0/scraper": "^1.0.0",
+    "@0y0/scraper-extensions": "^1.0.0",
+    "@0y0/scraper-plugin-http": "^1.0.0",
     "debug": "^4.3.1",
     "dotenv": "^8.2.0"
   },
   "devDependencies": {
-    "@0y0/babel-preset-vanilla": "^1.0.1",
-    "@0y0/eslint-config-vanilla": "^1.1.2",
-    "@babel/core": "^7.12.16",
-    "eslint": "^7.20.0",
+    "@0y0/babel-preset-vanilla": "^1.1.1",
+    "@0y0/eslint-config-vanilla": "^1.2.2",
+    "eslint": "^7.21.0",
     "prettier": "^2.2.1"
   },
   "babel": {
